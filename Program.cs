@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Design;
-using System.Collections.Generic; //me permite usar o list
+using System.Collections.Generic;
+using System.Security.AccessControl; //me permite usar o list
 
 public class Program
 {
@@ -47,7 +48,7 @@ public class Program
 
     static List<Aluno> listaDeAlunos = new List<Aluno>();
 
-    //cria o objeto aluno
+    //cria o objeto aluno, agora aluno é um tipo de dado, quase como um novo tipo de variavel
     public class Aluno
     {
         public string Nome { get; set; }
@@ -81,6 +82,7 @@ public class Program
     {
         Console.WriteLine("--------- Alunos cadastrados ---------");
 
+        /*
         for (int i = 0; i < listaDeAlunos.Count; i++)
         {
             Console.WriteLine($"Nome: {listaDeAlunos[i].Nome}");
@@ -88,10 +90,42 @@ public class Program
             Console.WriteLine($"Nota: {listaDeAlunos[i].Nota}");
             Console.WriteLine();
         }
+        */
+
+        //maneira diferente de fazer
+        //siginifica que para cada Aluno que existir dentro de listaDeAlunos, chame esse objeto de estudante
+        //aqui eu chamei o foreach, e criei uma nova "variavel" do tipo aluno chamada Aluno, ele vai nomear todos os objetos em lista de alunos que estiverem em Aluno de estudante, pra não ficar tão confuso
+        foreach (Aluno estudante in listaDeAlunos)
+        {
+            Console.WriteLine($"Nome: {estudante.Nome}");
+            Console.WriteLine($"Idade: {estudante.Idade}");
+            Console.WriteLine($"Nota: {estudante.Nota}");
+            Console.WriteLine();
+        }
     }
 
     static void BuscarAluno()
     {
+        Console.WriteLine("Digite o nome do aluno: ");
+        string nomeAluno = Console.ReadLine();
 
+        bool encontrado = false;
+
+        for (int i = 0; i < listaDeAlunos.Count; i++)
+        {
+            if (nomeAluno == listaDeAlunos[i].Nome)
+            {
+                Console.WriteLine($"Nome: {listaDeAlunos[i].Nome}");
+                Console.WriteLine($"Idade: {listaDeAlunos[i].Idade}");
+                Console.WriteLine($"Nota: {listaDeAlunos[i].Nota}");
+                Console.WriteLine();
+
+                encontrado = true;
+            }
+            if (encontrado == false)
+            {
+                Console.WriteLine("Aluno não encontrado.");
+            }
+        }
     }
 }

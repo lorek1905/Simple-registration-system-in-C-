@@ -12,3 +12,4 @@ C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.pdb
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\ref\app gerenciar alunos.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.sourcelink.json
