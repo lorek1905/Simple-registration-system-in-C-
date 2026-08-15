@@ -1,9 +1,5 @@
 ﻿using System;
-using System.ComponentModel.Design;
-using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Reflection.Metadata;
-using System.Net.Http.Headers; //me permite usar o list
+using System.Collections.Generic; //me permite usar o list
 
 public class Program
 {
@@ -27,7 +23,6 @@ public class Program
             switch (menu)
             {
                 case 1:
-
                     CadastrarAluno();
                     break;
                 case 2:
@@ -187,6 +182,13 @@ public class Program
 
     static void Media()
     {
+
+        if (listaDeAlunos.Count == 0)
+        {
+            Console.WriteLine("Não existem alunos cadastrados.");
+            return;
+        }
+
         float somarNotas = 0;
         int quantDeAlunos = 0;
         for (int i = 0; i < listaDeAlunos.Count; i++)
