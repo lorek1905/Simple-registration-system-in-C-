@@ -1,0 +1,14 @@
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\bin\Debug\net10.0\app gerenciar alunos.exe
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\bin\Debug\net10.0\app gerenciar alunos.deps.json
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\bin\Debug\net10.0\app gerenciar alunos.runtimeconfig.json
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\bin\Debug\net10.0\app gerenciar alunos.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\bin\Debug\net10.0\app gerenciar alunos.pdb
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\refint\app gerenciar alunos.dll
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.pdb
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\app gerenciar alunos.genruntimeconfig.cache
+C:\Users\Usuario\Desktop\FACULDADE\CursoC#\app gerenciar alunos\obj\Debug\net10.0\ref\app gerenciar alunos.dll
