@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic; //me permite usar o list
+using System.Collections.Generic;
+using System.Runtime.InteropServices.Marshalling; //me permite usar o list
 
 public class Program
 {
@@ -16,7 +17,8 @@ public class Program
             Console.WriteLine("3 - Buscar Aluno");
             Console.WriteLine("4 - Remover Aluno");
             Console.WriteLine("5 - Mostrar média geral");
-            Console.WriteLine("6 - Sair");
+            Console.WriteLine("6 - Consultar aprovação");
+            Console.WriteLine("7 - Sair");
 
             menu = int.Parse(Console.ReadLine());
 
@@ -38,11 +40,14 @@ public class Program
                     Media();
                     break;
                 case 6:
+                    ConsultarAprovacao();
+                    break;
+                case 7:
                     Console.Write("Programa encerrado.");
                     break;
             }
         }
-        while (menu != 6);
+        while (menu != 7);
     }
 
 
@@ -67,15 +72,43 @@ public class Program
 
     static void CadastrarAluno()
     {
+
         Console.WriteLine("Digite o nome do aluno:");
         string nome = Console.ReadLine();
         Console.WriteLine("Digite a idade do aluno:");
         int idade = int.Parse(Console.ReadLine());
-        Console.WriteLine("Digite a nota do aluno:");
+        Console.WriteLine("Digite a nota do aluno de 0 a 10:");
         float nota = float.Parse(Console.ReadLine());
+        while (nota > 10 || nota < 0)
+        {
+            Console.WriteLine("Nota invalida! Digite novamente: ");
+            nota = float.Parse(Console.ReadLine());
 
-        Aluno novoAluno = new Aluno(nome, idade, nota);
-        listaDeAlunos.Add(novoAluno);
+        }
+
+        if (listaDeAlunos.Count == 0)
+        {
+            Aluno novoAluno = new Aluno(nome, idade, nota);
+            listaDeAlunos.Add(novoAluno);
+        }
+        else
+        {
+            foreach (Aluno estudante in listaDeAlunos)
+            {
+                if (nome == estudante.Nome)
+                {
+                    Console.WriteLine("Aluno já existe em registro.");
+                    Console.WriteLine("Operação cancelada.");
+                    break;
+                }
+                else
+                {
+                    Aluno novoAluno = new Aluno(nome, idade, nota);
+                    listaDeAlunos.Add(novoAluno);
+                }
+            }
+        }
+
     }
 
     static void ListarAluno()
@@ -156,7 +189,9 @@ public class Program
         Console.WriteLine("Digite o nome do aluno que deseja remover: ");
         string nomeAluno = Console.ReadLine();
 
-        for (int i = 0; i < listaDeAlunos.Count; i++)
+        Aluno encontrado = null;
+
+        /*for (int i = 0; i < listaDeAlunos.Count; i++)
         {
             if (nomeAluno == listaDeAlunos[i].Nome)
             {
@@ -178,6 +213,31 @@ public class Program
                 Console.WriteLine();
             }
         }
+        */
+        foreach (Aluno estudante in listaDeAlunos)
+        {
+            if (nomeAluno == estudante.Nome)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Nome: {estudante.Nome}");
+                Console.WriteLine($"Idade: {estudante.Idade}");
+                Console.WriteLine($"Nota: {estudante.Nota}");
+                Console.WriteLine();
+                Console.WriteLine("Tem certeza que gostaria de remover este aluno?");
+                Console.WriteLine("1 - sim");
+                Console.WriteLine("2 - não");
+                int decisao = int.Parse(Console.ReadLine());
+
+                if (decisao == 1)
+                {
+                    encontrado = estudante;
+                    break;
+                }
+
+            }
+        }
+
+        listaDeAlunos.Remove(encontrado);
     }
 
     static void Media()
@@ -200,4 +260,46 @@ public class Program
 
         Console.WriteLine($"A nota média da turma é de {media} pontos.");
     }
+
+    static void ConsultarAprovacao()
+    {
+        if (listaDeAlunos.Count == 0)
+        {
+            Console.WriteLine("Você ainda não registrou nenhum aluno!");
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.Write("Digite o nome do aluno que deseja consultar: ");
+            string nomeAluno = Console.ReadLine();
+
+            foreach (Aluno estudante in listaDeAlunos)
+            {
+                if (nomeAluno == estudante.Nome)
+                {
+                    Console.WriteLine($"Nome: {estudante.Nome}");
+                    Console.WriteLine($"Idade: {estudante.Idade}");
+                    Console.WriteLine($"Nota: {estudante.Nota}");
+
+                    if (estudante.Nota >= 6)
+                    {
+                        Console.WriteLine("Situação: Aprovado");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Situação: Reprovado");
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("Estudante não encontrado");
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+
+    //depois eu concerto umas coisinhas que ficaram estranhas
+
 }
