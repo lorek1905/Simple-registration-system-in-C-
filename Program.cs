@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.Marshalling; //me permite usar o list
+using System.Runtime.InteropServices.Marshalling;
 
 public class Program
 {
@@ -86,6 +86,8 @@ public class Program
 
         }
 
+        bool encontrado = false;
+
         if (listaDeAlunos.Count == 0)
         {
             Aluno novoAluno = new Aluno(nome, idade, nota);
@@ -97,15 +99,20 @@ public class Program
             {
                 if (nome == estudante.Nome)
                 {
-                    Console.WriteLine("Aluno já existe em registro.");
-                    Console.WriteLine("Operação cancelada.");
-                    break;
+                    encontrado = true;
                 }
-                else
-                {
-                    Aluno novoAluno = new Aluno(nome, idade, nota);
-                    listaDeAlunos.Add(novoAluno);
-                }
+
+            }
+            if (encontrado == true)
+            {
+                Console.WriteLine("Aluno já existe em registro.");
+                Console.WriteLine("Operação cancelada.");
+
+            }
+            else
+            {
+                Aluno novoAluno = new Aluno(nome, idade, nota);
+                listaDeAlunos.Add(novoAluno);
             }
         }
 
@@ -233,11 +240,16 @@ public class Program
                     encontrado = estudante;
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("Operação cancelada.");
+                    break;
+                }
 
             }
         }
-
-        listaDeAlunos.Remove(encontrado);
+        if (encontrado != null)
+            listaDeAlunos.Remove(encontrado);
     }
 
     static void Media()
@@ -263,6 +275,9 @@ public class Program
 
     static void ConsultarAprovacao()
     {
+
+        Aluno AlunoEncontrado = null;
+
         if (listaDeAlunos.Count == 0)
         {
             Console.WriteLine("Você ainda não registrou nenhum aluno!");
@@ -277,25 +292,30 @@ public class Program
             {
                 if (nomeAluno == estudante.Nome)
                 {
-                    Console.WriteLine($"Nome: {estudante.Nome}");
-                    Console.WriteLine($"Idade: {estudante.Idade}");
-                    Console.WriteLine($"Nota: {estudante.Nota}");
+                    AlunoEncontrado = estudante;
+                }
 
-                    if (estudante.Nota >= 6)
-                    {
-                        Console.WriteLine("Situação: Aprovado");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Situação: Reprovado");
-                    }
-                    Console.WriteLine();
+            }
+            if (AlunoEncontrado != null)
+            {
+                Console.WriteLine($"Nome: {AlunoEncontrado.Nome}");
+                Console.WriteLine($"Idade: {AlunoEncontrado.Idade}");
+                Console.WriteLine($"Nota: {AlunoEncontrado.Nota}");
+
+                if (AlunoEncontrado.Nota >= 6)
+                {
+                    Console.WriteLine("Situação: Aprovado");
                 }
                 else
                 {
-                    Console.WriteLine("Estudante não encontrado");
-                    Console.WriteLine();
+                    Console.WriteLine("Situação: Reprovado");
                 }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Estudante não encontrado");
+                Console.WriteLine();
             }
         }
     }
